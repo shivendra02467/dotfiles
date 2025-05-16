@@ -1,0 +1,96 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top",
+    "position": "top",
+    "height": 20,
+    "spacing": 6,
+    "modules-left": [
+	"cpu",
+	"memory",
+	"temperature",
+	"bluetooth"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+	"backlight",
+        "pulseaudio",
+        "network",
+        "battery"
+    ],
+
+    "pulseaudio": {
+	"tooltip": false,
+        "format": "{icon}   {volume}%",
+        "format-muted": " ",
+        "format-source": " {volume}%",
+        "format-source-muted": " ",
+        "format-icons": {
+            "headphone": " ",
+            "default": [" ", " ", " "]
+        },
+	"scroll-step": 2,
+	"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+	"interval": 1
+    },
+    "network": {
+	"tooltip": false,
+        "format-wifi": "    {essid} ({signalStrength}%)",
+        "format-ethernet": "    {ipaddr}/{cidr}",
+        "format-linked": "    {ifname} (No IP)",
+        "format-disconnected": "⚠   Disconnected",
+	"interval": 1
+    },
+    "cpu": {
+	"tooltip": false,
+        "format": "    {usage}%",
+	"interval": 1
+    },
+    "memory": {
+	"tooltip": false,
+        "format": "    {}%",
+	"interval": 1
+    },
+    "temperature": {
+	"tooltip": false,
+        "interval": 1,
+        "format": "   {temperatureC}°C"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}   {capacity}%",
+        "format-plugged": "   {capacity}%",
+	"format-charging": "   {capacity}%",
+        "format-icons": [" ", " ", " ", " ", " "],
+	"interval": 1
+    },
+    "clock": {
+    	"format": "{:%I:%M %p     %d-%m-%Y}",
+    	"tooltip": false,
+	"interval": 1
+    },
+    "bluetooth": {
+    	"format": " {status}",
+    	"tooltip": false,
+    	"on-click": "kitty bluetoothctl",
+	"interval": 1
+    },
+    "backlight": {
+    	"format": "{icon}   {percent}%",
+    	"format-icons": [
+        	"󰃞 ",
+        	"󰃟 ",
+        	"󰃝 ",
+        	"󰃠 "
+    	],
+    	"tooltip": false,
+    	"on-scroll-up": "brightnessctl set +5%",
+    	"on-scroll-down": "brightnessctl set 5%-",
+	"interval": 1
+    }
+
+}
