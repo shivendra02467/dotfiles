@@ -36,9 +36,8 @@
     },
     "network": {
 	"tooltip": false,
-        "format-wifi": "    {essid} ({signalStrength}%)",
-        "format-ethernet": "    {ipaddr}/{cidr}",
-        "format-linked": "    {ifname} (No IP)",
+        "format-wifi": "    {essid} ({bandwidthDownBytes})",
+        "format-ethernet": "   ETHERNET ({bandwidthDownBytes})",
         "format-disconnected": "⚠   Disconnected",
 	"interval": 1
     },
